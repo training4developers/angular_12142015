@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Welcome to Introduction to Angular.js</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+	</head>
+	<body>
+
+
+		<script>
+
+				function outer() {
+
+					var t = "Fidelity Charitable Helps to Grow The Money Which Formerly Belonged To You for a Good Cause!";
+
+					function inner() {
+						console.log(t);
+					}
+
+					setTimeout(function() {
+						t = "Andrew's brother, Phillip, works for Google!";
+					},1000);
+
+
+					return inner;
+
+				}
+
+				var fn = outer();
+
+				fn();
+
+				setTimeout(function() {
+					fn()
+				},2000);
+
+
+		</script>
+
+	</body>
+</html>

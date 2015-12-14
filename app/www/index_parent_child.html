@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Welcome to Introduction to Angular.js</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+	</head>
+	<body>
+
+		<div ng-app="MyApp">
+			<div ng-controller="ParentCtrl">
+				Parent Message: {{data.message}}<br>
+				Parent Message: <input ng-model="data.message">
+				<div ng-controller="ChildCtrl">
+					Child Message: {{data.message}}<br>
+					Child Message: <input ng-model="data.message">
+				</div>
+			</div>
+		</div>
+
+		<script>
+
+			angular.module("MyApp", [])
+				.controller("ParentCtrl", function($scope) {
+					$scope.data = {};
+				})
+				.controller("ChildCtrl", function($scope) {
+				});
+
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Welcome to Introduction to Angular.js</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+	</head>
+	<body>
+
+		<div ng-app="MyApp">
+			<div ng-controller="MyCtrl">
+			</div>
+		</div>
+
+		<script>
+
+			myCtrl.$inject = ["$log", "$scope", "$rootScope"];
+
+			function myCtrl($log, $scope, $rootScope) {
+					$log.log("Hi Class! Angular.js Rocks!");
+			}
+
+
+			angular.module("MyApp", [])
+				.controller("MyCtrl",myCtrl);
+
+		</script>
+
+	</body>
+</html>
