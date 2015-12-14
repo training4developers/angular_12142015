@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Welcome to Introduction to Angular.js</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+	</head>
+	<body>
+
+		<div ng-app="MyApp">
+			Show Me <input ng-model="showMe" type="checkbox">
+			<div ng-controller="OuterCtrl">
+				Outer: {{message}}
+				Scope: {{$id}}
+				<div ng-if="showMe">
+					Scope: {{$id}}
+					<div ng-controller="InnerCtrl">
+						Inner: {{message}}
+						Scope: {{$id}}
+						<button ng-click="clickMe()">Click Me</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+
+			angular.module("MyApp", [])
+				.factory("EventChannel", function() {
+
+					if (!window.globalEvents) {
+						window.globalEvents = {};
+					}
+
+					return {
+						on: function(eventName, eventHandler) {
+							if (!events[eventName]) {
+								events[eventName] = [];
+							}
+							events[eventName].push(eventHandler);
+						},
+						trigger: function(eventName, eventData) {
+							if(events[eventName]) {
+								events[eventName].forEach(function(eventHandler) {
+									eventHandler(eventData);
+								});
+							}
+						}
+					}
+
+				})
+				.controller("OuterCtrl", function($scope, EventChannel) {
+
+					$scope.message = "Outer Ctrl";
+
+					EventChannel.on("update-outer-message", function(data) {
+						$scope.message = data;
+					});
+				})
+				.controller("InnerCtrl", function($scope, EventChannel) {
+					$scope.clickMe = function() {
+						EventChannel.trigger("update-outer-message","Hi Class!");
+					};
+				});
+
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Welcome to Introduction to Angular.js</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+		<style>
+			label { display:block; }
+			div {
+				border: 2px solid red;
+				padding:5px;
+				margin:5px;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div ng-app="MyApp">
+			{{$id}}
+			<div ng-controller="MyCtrl">
+				{{$id}}
+				<div ng-controller="MyCtrl">
+					{{$id}}
+					<div ng-controller="MyCtrl">
+						{{$id}}
+						{{message}}
+					</div>
+				</div>
+				<div ng-controller="MyCtrl">
+					{{$id}}
+				</div>
+			</div>
+			<div ng-controller="MyCtrl">
+				{{$id}}
+				<div ng-controller="MyCtrl">
+					{{$id}}
+				</div>
+			</div>
+			<div ng-controller="MyCtrl">
+				{{$id}}
+				<div ng-controller="MyCtrl">
+					{{$id}}
+				</div>
+				<div ng-controller="MyCtrl">
+					{{$id}}
+				</div>
+			</div>
+			<div ng-controller="MyCtrl">
+				{{$id}}
+			</div>
+		</div>
+
+		<script>
+
+			angular.module("MyApp", [])
+				.controller("MyCtrl", function($scope, $rootScope) {
+					$rootScope.message = "From the Root Scope";
+
+				});
+
+		</script>
+
+	</body>
+</html>

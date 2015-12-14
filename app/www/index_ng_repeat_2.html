@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Welcome to Introduction to Angular.js</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+	</head>
+	<body>
+
+		<div ng-app="MyApp">
+			<div ng-controller="MyCtrl">
+
+				<input ng-model="colorFilter">
+
+				<ul>
+					<li ng-repeat="color in colors | filter:colorFilter">{{$index}} {{color}}</li>
+				</ul>
+
+
+				<button ng-click="showScope()">Show Scope</button>
+			</div>
+		</div>
+
+		<script>
+
+			angular.module("MyApp", [])
+				.controller("MyCtrl", function($scope, $rootScope) {
+
+					$scope.colors = ["red","blue","white","green","black","brown","burlywood","bisque"];
+
+					$scope.showScope = function() {
+						console.dir($scope);
+					};
+
+				});
+
+		</script>
+
+	</body>
+</html>

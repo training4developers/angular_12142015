@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Welcome to Introduction to Angular.js</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+		<style>
+			label { display:block; }
+		</style>
+	</head>
+	<body>
+
+		<div ng-app="MyApp">
+			{{message}}
+			<div ng-controller="MyCtrl">
+				{{message}}
+				<label>Car Make Filter <input ng-model="carMakeFilter"></label>
+				<label>Car Make Model <input ng-model="carModelFilter"></label>
+				<label>Car Make Year <input ng-model="carYearFilter"></label>
+				<ul>
+					<li ng-repeat="car in cars |
+						filter:{make:carMakeFilter,model:carModelFilter,year:carYearFilter} |
+						orderBy:'year':true">{{car.make}} / {{car.model}} / {{car.year}} {{message}}</li>
+				</ul>
+
+				<form>
+					<h2>New Car</h2>
+					<label>Car Make <input ng-model="carMake"></label>
+					<label>Car Model <input ng-model="carModel"></label>
+					<label>Car Year <input ng-model="carYear"></label>
+					<button onclick="addCar()">Add Car</button>
+				</form>
+
+			</div>
+		</div>
+
+		<script>
+
+			angular.module("MyApp", [])
+				.controller("MyCtrl", function($scope, $rootScope) {
+
+					$rootScope.message = "Hi Class!";
+
+					$scope.cars = [
+						{ make: "Ford", model: "Fusion", year: 2014 },
+						{ make: "Tesla", model: "S", year: 2015 },
+						{ make: "Porshe", model: "911 Turbo", year: 2015 },
+						{ make: "Toyota", model: "Sienna", year: 2015 },
+						{ make: "Kia", model: "Sedona", year: 2012 },
+						{ make: "Toyota", model: "Highlander", year: 2010 }
+					];
+
+					$scope.addCar = function() {
+						console.log("I was clicked!");
+						$scope.cars.push({
+							make: $scope.carMake,
+							model: $scope.carModel,
+							year: $scope.carYear
+						});
+						console.dir($scope.cars);
+					};
+
+					$scope.$watch(function() {
+						console.log("$digest loop is running");
+
+						var count = 1000000000;
+						while(count--) {}
+					});
+
+				});
+
+		</script>
+
+	</body>
+</html>
