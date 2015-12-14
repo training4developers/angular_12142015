@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Welcome to Introduction to Angular.js</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+	</head>
+	<body>
+		<script>
+
+
+			var x=0,y=0,funcs=[];
+
+			for(;x<5;x++) {
+
+				// iife - immediately invoked function expression
+				(function() {
+
+					var t = x;
+					funcs.push(function() {
+						console.log(t);
+					});
+
+				})();
+
+			}
+
+			for(;y<5;y++) {
+				funcs[y]();
+			}
+
+		</script>
+	</body>
+</html>

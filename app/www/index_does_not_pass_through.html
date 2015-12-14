@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Welcome to Introduction to Angular.js</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+	</head>
+	<body>
+		<script>
+
+			"use strict";
+
+			function outer() {
+
+				// var that = this;
+				//
+				// function inner() {
+				//
+				// 	that.name = "Bob";
+				//
+				// }
+
+				let inner = () => {
+					this.name = "Bob";
+				};
+
+				inner();
+
+				console.log(this.name);
+
+			}
+
+			var o = {
+				outer: outer
+			};
+
+			o.outer();
+
+
+
+		</script>
+	</body>
+</html>

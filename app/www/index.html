@@ -6,20 +6,34 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
 	</head>
 	<body>
+
+		<div ng-app="MyApp">
+			<div ng-controller="MyCtrl">
+				{{message}}
+			</div>
+		</div>
+
 		<script>
 
+			"use strict";
 
-			var x=0,y=0,funcs=[];
+			angular.module("MyApp", [])
+				.controller("MyCtrl", function($scope) {
 
-			for(;x<5;x++) {
-				funcs.push(function() {
-					console.log(x);
+					$scope.message = "Almost the end of the day!";
+
+					setTimeout(function() {
+
+						$scope.$apply(function() {
+							$scope.message = "No! Let's have an evening session!";
+						});
+
+						console.log("timeout expired");
+					}, 2000);
+
+
+
 				});
-			}
-
-			for(;y<5;y++) {
-				funcs[y]();
-			}
 
 		</script>
 	</body>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Welcome to Introduction to Angular.js</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+	</head>
+	<body>
+		<script>
+
+			"use strict";
+
+			function rainbowUnicorns() {
+
+				console.dir(this);
+
+			}
+
+			rainbowUnicorns();
+			window.rainbowUnicorns();
+
+			var mysticalWorld = {
+				name: "Bob",
+				rainbowUnicorns: rainbowUnicorns
+			};
+
+			mysticalWorld.rainbowUnicorns();
+
+			console.log(mysticalWorld.rainbowUnicorns === window.rainbowUnicorns);
+
+			var baseObject = {
+				doSomething: function() {
+					console.log("did it!" + this.name);
+				}
+			}
+
+			var objectA = Object.create(baseObject);
+			var objectB = Object.create(baseObject);
+
+			objectA.name = "Jalak";
+			objectB.name = "Laxmi";
+
+			objectA.doSomething();
+			objectB.doSomething();
+
+			console.log(objectA.doSomething === objectB.doSomething);
+
+
+		</script>
+	</body>
+</html>
