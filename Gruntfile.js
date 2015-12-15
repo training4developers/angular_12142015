@@ -168,11 +168,11 @@ module.exports = function(grunt) {
 				files: path.join(tplsFolder, "**", "*.tpl.html"),
 				tasks: ["html2js:main"]
 			},
-      css: {
-				files: path.join(sassFolder, "site.scss"),
-				tasks: ["sass", "cssmin"]
-				// tasks: ["sass", "cssmin", "compress:css"]
-			},
+      // css: {
+			// 	files: path.join(sassFolder, "site.scss"),
+			// 	tasks: ["sass", "cssmin"]
+			// 	// tasks: ["sass", "cssmin", "compress:css"]
+			// },
 			js: {
 				files: [
 					path.join(jsFolder, "**", "*.js"),
@@ -185,7 +185,7 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks("grunt-contrib-uglify");
 	grunt.loadNpmTasks("grunt-contrib-cssmin");
-	grunt.loadNpmTasks("grunt-contrib-sass");
+	// grunt.loadNpmTasks("grunt-contrib-sass");
 	// grunt.loadNpmTasks("grunt-contrib-compress");
 	grunt.loadNpmTasks("grunt-contrib-watch");
 	grunt.loadNpmTasks('grunt-html2js');
@@ -197,7 +197,7 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask("default", "standard dev task",
-		["html2js", "sass", "cssmin", "uglify:combine", "uglify:minify", "servers", "watch"]);
+		["html2js", "cssmin", "uglify:combine", "uglify:minify", "servers", "watch"]);
 		// ["html2js", "sass", "cssmin", "compress:css", "uglify:combine", "uglify:minify", "compress:js", "servers", "watch"]);
 
 };
