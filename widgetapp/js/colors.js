@@ -8,7 +8,8 @@
 			{ code: "orange", name: "Orange", category: "Budget" },
 			{ code: "purple", name: "Purple", category: "Premium" },
 			{ code: "tomato", name: "Tomato", category: "Standard" },
-			{ code: "green", name: "Green", category: "Standard" }
+			{ code: "green", name: "Green", category: "Standard" },
+			{ code: "teal", name: "Teal", category: "Standard" }
 		];
 
 		return {

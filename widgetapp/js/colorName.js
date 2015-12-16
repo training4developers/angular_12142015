@@ -6,9 +6,15 @@
 
 		return function(value) {
 
-			return colors.getAll().filter(function(color) {
+			var filteredColors = colors.getAll().filter(function(color) {
 				return color.code === value;
-			})[0].name;
+			});
+
+			if (filteredColors.length < 1) {
+				return value;
+			} else {
+				return filteredColors[0].name;
+			}
 
 		};
 

@@ -1,9 +1,12 @@
 (function(angular) {
 
-	ctrl.$inject = ["$scope", "widgets", "$stateParams"]
+	ctrl.$inject = ["$scope", "widgets2", "$stateParams"]
 
 	function ctrl($scope, widgets, $stateParams) {
-		$scope.widget = widgets.get(parseInt($stateParams.widgetId,10));
+
+		widgets.get($stateParams.widgetId).then(function(results) {
+			$scope.widget = results.data;
+		});
 	}
 
 	angular.module("WidgetApp.Controllers")

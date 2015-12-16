@@ -11,7 +11,7 @@
 	<tbody>
 		<tr ng-repeat="widget in widgets">
 			<td>{{widget.name}}</td>
-			<td>{{widget.color}}</td>
+			<td>{{widget.color | colorName}}</td>
 			<td>{{widget.size}}</td>
 			<td>{{widget.quantity}}</td>
 			<td>

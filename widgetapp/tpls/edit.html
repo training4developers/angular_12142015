@@ -27,7 +27,8 @@
 		</div>
 		<div>
 			<label>Description:
-				<input ng-model="widget.description" name="widgetDescription" required>
+				<textarea ng-model="widget.description" name="widgetDescription"
+					rows="5" cols="40" required></textarea>
 			</label>
 			<span ng-show="widgetForm.widgetDescription.$invalid && widgetForm.widgetDescription.$touched">
 				Please enter a description.
@@ -46,12 +47,18 @@
 			</span>
 		</div>
 		<div>
-			<label>Size:
-				<input ng-model="widget.size" name="widgetSize" required>
-			</label>
-			<span ng-show="widgetForm.widgetSize.$invalid && widgetForm.widgetSize.$touched">
-				Please enter a size.
-			</span>
+			<fieldset>
+				<legend>Size:</legend>
+				<label>Small:
+					<input name="widgetSize" ng-model="widget.size" type="radio" value="small">
+				</label>
+				<label>Medium:
+					<input name="widgetSize" ng-model="widget.size" type="radio" value="medium">
+				</label>
+				<label>Large:
+					<input name="widgetSize" ng-model="widget.size" type="radio" value="large">
+				</label>
+			</fieldset>
 		</div>
 		<div>
 			<label>Quantity:
