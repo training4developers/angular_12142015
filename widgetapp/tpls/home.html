@@ -1,0 +1,24 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Color</th>
+			<th>Size</th>
+			<th>Quantity</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="widget in widgets">
+			<td>{{widget.name}}</td>
+			<td>{{widget.color}}</td>
+			<td>{{widget.size}}</td>
+			<td>{{widget.quantity}}</td>
+			<td>
+				<button ui-sref="edit({ widgetId: widget.id })">Edit</button>
+				<button ui-sref="view({ widgetId: widget.id })">View</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<button ui-sref="create">Create Widget</button>

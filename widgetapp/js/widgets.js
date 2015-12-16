@@ -1,5 +1,7 @@
 (function(angular) {
 
+	factory.$inject = [];
+
 	function factory() {
 
 		var
