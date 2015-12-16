@@ -10,25 +10,36 @@
 
 		// promise explanation
 
-		var youngLady = $q.defer();
 
-		var youngMan = youngLady.promise;
+		function myPromise() {
+			var d = $q.defer();
 
-		youngMan.then(function(results) {
-			console.log("time to get ready to get married!");
-			console.log(results);
-		}).catch(function(results) {
-			console.log("young man is going sign up for FarmersOnly.com ...");
-			console.log(results);
+			setTimeout(function() {
+				d.resolve();
+			}, 2000);
+
+			return d.promise;
+		}
+
+		var p = myPromise();
+
+		p.then(function() {
+			
+		})
+
+		var p = new Promise(function(resolve, reject) {
+
+			setTimeout(function() {
+				resolve();
+			},2000);
+
 		});
 
-		setTimeout(function() {
-			console.log("she has decided...");
-			youngLady.reject("she took a Facebook poll, and her friends said no...");
-		},3000);
-
-		console.log("young man is waiting...");
-
+		p.then(function() {
+			console.log("success!");
+		}).catch(function() {
+			console.log("failure!");
+		});
 
 
 	}

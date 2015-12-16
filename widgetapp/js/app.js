@@ -7,9 +7,10 @@
 	angular.module("WidgetApp.Services", ["WidgetApp.Constants"]);
 	angular.module("WidgetApp.Filters", ["WidgetApp.Services"]);
 	angular.module("WidgetApp.Controllers", ["WidgetApp.Services"]);
+	angular.module("WidgetApp.Directives", []);
 
 	angular.module("WidgetApp",
-		["ui.router", "WidgetApp.Constants", "WidgetApp.Controllers","WidgetApp.Filters"])
+		["ui.router", "WidgetApp.Constants", "WidgetApp.Directives", "WidgetApp.Controllers","WidgetApp.Filters"])
 		.run(function($templateCache) {
 
 			$templateCache.put("tpls/home.html", `
@@ -73,7 +74,7 @@
 					<div>
 						<div>
 							<label>Name:
-								<input ng-model="widget.name" name="widgetName" required>
+								<input ng-model="widget.name" name="widgetName" fmr-required>
 							</label>
 							<span ng-show="widgetForm.widgetName.$invalid && widgetForm.widgetName.$touched">
 								Please enter a name.
