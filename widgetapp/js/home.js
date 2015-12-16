@@ -7,44 +7,57 @@
 		widgets.getAll().then(function(results) {
 			$scope.widgets = results.data;
 		});
-
-		// promise explanation
-
-
-		function myPromise() {
-			var d = $q.defer();
-
-			setTimeout(function() {
-				d.resolve();
-			}, 2000);
-
-			return d.promise;
-		}
-
-		var p = myPromise();
-
-		p.then(function() {
-			
-		})
-
-		var p = new Promise(function(resolve, reject) {
-
-			setTimeout(function() {
-				resolve();
-			},2000);
-
-		});
-
-		p.then(function() {
-			console.log("success!");
-		}).catch(function() {
-			console.log("failure!");
-		});
-
-
 	}
 
 	angular.module("WidgetApp.Controllers")
-		.controller("HomeCtrl", ctrl);
+		.controller("HomeCtrl", ctrl)
+		.directive("firstDir", function() {
+
+			return {
+				priority: 10,
+				controller: function() {
+					console.log("firstDir");
+				}
+			}
+
+		})
+		.directive("secondDir", function($compile) {
+
+			return {
+				priority: 50,
+				terminal: true,
+				controller: function() {
+					console.log("secondDir");
+				},
+				compile: function(tElement, tAttrs) {
+
+					var tpl = tElement[0].outerHTML;
+					var pri = this.priority;
+
+					return function(scope, element, attrs, ctrl, transclude) {
+
+						var linkingFn = $compile(tpl, null, pri);
+						var domElements = linkingFn(scope);
+						element.append(domElements);
+
+						var linkingFn = $compile(tpl, null, pri);
+						var domElements = linkingFn(scope);
+						element.append(domElements);
+
+						var linkingFn = $compile(tpl, null, pri);
+						var domElements = linkingFn(scope);
+						element.append(domElements);
+
+						var linkingFn = $compile(tpl, null, pri);
+						var domElements = linkingFn(scope);
+						element.append(domElements);											
+
+
+					}
+
+				}
+			}
+
+		});
 
 })(angular);

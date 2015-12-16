@@ -38,6 +38,7 @@
 					</tbody>
 				</table>
 				<button ui-sref="create">Create Widget</button>
+				<div first-dir second-dir></div>
 			`);
 
 			$templateCache.put("tpls/view.html", `
@@ -62,6 +63,9 @@
 					}
 				</style>
 				<form novalidate name="widgetForm">
+					<div fmr-alert="messages"
+						fmr-alert-title="Validation Messages"
+						fmr-alert-show="showAlert"></div>
 					<div ng-show="widgetForm.$invalid">
 						<ul>
 							<li ng-show="widgetForm.widgetName.$invalid && widgetForm.widgetName.$touched">Please enter a name.</li>
@@ -124,7 +128,7 @@
 							</span>
 						</div>
 					</div>
-					<button type="button" ng-click="saveWidget()" ng-disabled="widgetForm.$invalid">Save</button>
+					<button type="button" ng-click="saveWidget()" kng-disabled="widgetForm.$invalid">Save</button>
 					<button type="button" ng-click="deleteWidget()" ng-if="widget._id">Delete</button>
 					<button type="button" ui-sref="home">Return to List</button>
 				</form>
